@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
 
 /* Components */
+import { Navbar } from '../../global/navbar/navbar';
 import { Home } from '../home';
 import { MyOrder } from '../MyOrder';
 import { NotFound } from '../NotFound';
@@ -11,6 +12,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
+        <Navbar />
         <Routes>
           <Route path="/*" element={<NotFound />} />
           <Route index path="/" element={<Home />} />
