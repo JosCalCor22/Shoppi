@@ -1,8 +1,12 @@
+import { Layout } from "../../components/layout/layout"
+
 function MyProfile () {
   return (
-    <>
-      <p className="bg-black text-purple-500">My Profile</p>
-    </>
+    <section className="flex justify-center">
+      <Layout>
+        <h2>My Profile</h2>
+      </Layout>
+    </section>
   )
 }
 

@@ -4,8 +4,8 @@ function Navbar(){
   const classItemActive = ({ isActive }) => isActive ? 'underline underline-offset-4' : 'none';
 
   return (
-    <section className="navbar flex justify-between px-3 py-2.5">
-      <nav className="navbar__slogan flex gap-2 items-center">
+    <section className="flex justify-between px-3 py-2.5">
+      <nav className="flex gap-2 items-center">
         <NavLink to={"/"}>
           <span className="font-bold text-xl">Shopi</span>
         </NavLink>
@@ -40,7 +40,7 @@ function Navbar(){
           Others
         </NavLink>
       </nav>
-      <nav className="navbar__shop flex gap-2">
+      <nav className="flex gap-2">
         <NavLink to={"/"}>
           <span className="text-gray-500">myemail@gmail.com</span>
         </NavLink>
@@ -53,6 +53,11 @@ function Navbar(){
         to={'/my-order'} 
         className={classItemActive}>
           My order
+        </NavLink>
+        <NavLink 
+        to={'/sign-in'} 
+        className={classItemActive}>
+          Sign In
         </NavLink>
       </nav>  
     </section>
