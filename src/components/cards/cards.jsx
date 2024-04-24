@@ -1,14 +1,36 @@
+/* Hooks */
+import { useContext } from 'react'
+
+/* Components */
+import { ShopiCartContext } from '../../context';
+import { FiPlus } from "react-icons/fi";
+
 function Cards ({data}){
+  const context = useContext(ShopiCartContext);
+
+  const showDetailsProduct = (detailsObject) => {
+    context.setCloseItem(true);
+    context.setShowDetails(detailsObject);
+  }
+
   return(
-    <div className="h-72 min-w-72 max-w-80 flex flex-col justify-between gap-1">
-      <figure className="w-full h-[85%] relative">
-        <span className="absolute top-[10px] right-[10px] text-white px-2 pb-1 rounded-full cursor-pointer bg-zinc-400/20">x</span>
-        <img className="w-full h-full object-cover rounded-lg" src={data.images} alt={data.title} />
-        <span className="absolute bottom-[10px] left-[10px] text-white p-2 rounded-lg cursor-pointer bg-zinc-400/20">{data.category.name}</span>
+    <div className='h-fit w-[270px] flex flex-col justify-between'>
+      <figure className='w-full h-[85%] relative'>
+        <button 
+          onClick={() => context.setCounter(context.counter + 1)}
+          className='absolute top-[10px] right-[10px] p-1 text-white rounded-full cursor-pointer bg-zinc-400/90'>
+          <FiPlus />
+        </button>
+        <img 
+          onClick={() => showDetailsProduct(data)}
+          className='w-full h-[245px] rounded-b-none rounded-lg'
+          src={data.images} 
+          alt={data.title} />
+        <span className='absolute bottom-[10px] left-[10px] text-white p-2 rounded-lg cursor-pointer bg-zinc-400/40'>{data.category.name}</span>
       </figure>
-      <div className="flex justify-between">
-        <p className="text-base">{data.title}</p>
-        <span className="text-lg font-bold">${data.price}</span>
+      <div className='flex h-[60px] justify-between p-2 border-x border-b rounded-b-lg'>
+        <p className='text-base flex items-center w-[200px] text-left'>{data.title}</p>
+        <span className='flex items-center text-lg font-bold'>${data.price}</span>
       </div>
     </div>
   )

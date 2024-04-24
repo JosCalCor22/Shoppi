@@ -1,7 +1,14 @@
-import { NavLink } from "react-router-dom"
+/* Hooks */
+import { useContext } from 'react'
+
+/* Components */
+import { NavLink } from 'react-router-dom'
+import { FiShoppingCart } from 'react-icons/fi'
+import { ShopiCartContext } from '../../context'
 
 function Navbar(){
   const classItemActive = ({ isActive }) => isActive ? 'underline underline-offset-4' : 'none';
+  const context = useContext(ShopiCartContext);
 
   return (
     <section className="flex justify-between px-3 py-2.5">
@@ -58,6 +65,10 @@ function Navbar(){
         to={'/sign-in'} 
         className={classItemActive}>
           Sign In
+        </NavLink>
+        <NavLink className='flex gap-2 items-center'>
+          <FiShoppingCart  className='w-5 h-5' />
+          <span>{context.counter}</span>
         </NavLink>
       </nav>  
     </section>

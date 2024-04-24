@@ -1,6 +1,6 @@
 function Layout ({ children }) {
   return(
-    <section className="width-full flex-wrap">
+    <section className="flex width-full gap-8">
       {children}
     </section>
   )
