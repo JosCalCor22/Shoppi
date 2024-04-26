@@ -10,7 +10,7 @@ function AsideCart (){
   const context = useContext(ShopiCartContext);
 
   return (
-    <aside className={`${context.closeItem ? 'flex' : 'hidden'} flex-col sticky gap-5 top-5 w-[360px] h-[600px] overflow-y-scroll border-2 border-slate-950/5 rounded-lg`}>
+    <aside className={`${context.closeItem ? 'flex' : 'hidden'} flex-col sticky gap-5 top-5 w-[360px] h-fit overflow-y-scroll border-2 border-slate-950/5 rounded-lg`}>
       <section className='flex w-full h-fit justify-between py-4 px-5'>
         <h2 className="text-xl font-semibold">Info product</h2>
         <button
@@ -21,7 +21,7 @@ function AsideCart (){
       <section className="px-5">
         <h2 className="text-lg font-semibold mb-2">{context.showDetails.title}</h2>
         <figure className="grid gap-2">
-          <img className="w-full rounded-lg" src={context.showDetails.images} alt={context.showDetails.title} />
+          <img className="w-full rounded-lg" src={context.showDetails.images[0]} alt={context.showDetails.title} />
           <figcaption className="text-sm text-justify px-2 font-slate-700">{context.showDetails.description}</figcaption>
         </figure>
         <div className="flex justify-between mt-5 mb-3 border-t-2 p-3">

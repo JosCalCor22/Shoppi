@@ -3,7 +3,7 @@ import { useContext } from 'react'
 
 /* Components */
 import { NavLink } from 'react-router-dom'
-import { FiShoppingCart } from 'react-icons/fi'
+import { MdOutlineShoppingCart } from 'react-icons/md'
 import { ShopiCartContext } from '../../context'
 
 function Navbar(){
@@ -67,7 +67,7 @@ function Navbar(){
           Sign In
         </NavLink>
         <NavLink className='flex gap-2 items-center'>
-          <FiShoppingCart  className='w-5 h-5' />
+          <MdOutlineShoppingCart  className='w-5 h-5' />
           <span>{context.counter}</span>
         </NavLink>
       </nav>  

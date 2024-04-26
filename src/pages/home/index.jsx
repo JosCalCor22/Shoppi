@@ -1,18 +1,21 @@
 /* Hooks */
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 
 /* Components */
-import { Layout } from '../../components/layout/layout'
-import { AsideCart } from '../../components/asideCart'
+import { ShopiCartContext } from '../../context'
 import { Cards } from '../../components/cards/cards'
+import { AsideCart } from '../../components/asideCart'
+import { Layout } from '../../components/layout/layout'
+import { CheckoutAsideCart } from '../../components/checkoutCart'
 
 function Home () {
-  const [products, setproducts] = useState(null);
+  const [catalogue, setCatalogue] = useState([]);
+  const context = useContext(ShopiCartContext);
 
   useEffect(() => {
-    fetch('https://api.escuelajs.co/api/v1/products')
+    fetch('https://dummyjson.com/products')
       .then(response => response.json())
-      .then(data => setproducts(data))
+      .then(data => setCatalogue(data?.products))
   }, [])
 
   return (
@@ -22,13 +25,21 @@ function Home () {
           <h2 className='text-3xl w-fit font-semibold my-4 pb-1 px-3 border-b-2'>Home</h2>
           <section className='grid grid-cols-3 gap-5'>
             {
-              products?.map(item => (
+              catalogue?.map(item => (
                 <Cards key={item.id} data={item} />
               ))
             }
           </section>
         </section>
-        <AsideCart />
+        {
+          context.closeItem && !context.CheckoutAsideCart ? (
+            <AsideCart />
+          ) : null
+        }{
+          context.checkoutCartAside && !context.closeItem ? (
+            <CheckoutAsideCart />
+          ) : null
+        }
       </Layout>
     </section>
   )
