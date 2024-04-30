@@ -1,40 +1,50 @@
 /* Hooks */
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 
 /* Components */
-import { MdOutlineRemoveShoppingCart } from "react-icons/md";
-import { RiSubtractFill } from "react-icons/ri";
-import { GoPlus } from "react-icons/go";
+import { MdOutlineRemoveShoppingCart } from 'react-icons/md';
+import { ShopiCartContext } from '../../../context';
+import { RiSubtractFill } from 'react-icons/ri';
+import { GoPlus } from 'react-icons/go';
 import './styles/styles.css'
 
 function ItemsCart ({id, title, img, price, handleDeleteItem}) {
-  const [counter, setCounter] = useState(1);
+  const [counterQuantityProducts, setCounterQuantityProducts] = useState(1);
+  const context = useContext(ShopiCartContext);
+  
+  let totalQuantityProducts = counterQuantityProducts;
 
   const increaseCounter = () => {
-    setCounter(counter + 1);
-    if(counter === 10){
+    if(counterQuantityProducts === 10){
       alert("The maximum quantity is 10");
-      setCounter(10);
+      setCounterQuantityProducts(10);
+      context.setTotalPrice(context.totalPrice);
+    } else{
+      setCounterQuantityProducts(counterQuantityProducts + 1);
+      context.setTotalPrice(context.totalPrice += price);
     }
   }
 
   const decreaseCounter = () => {
-    setCounter(counter - 1);
-    if(counter === 1){
+    if(counterQuantityProducts === 1){
       alert("The minimum quantity is 1");
-      setCounter(1);
+      setCounterQuantityProducts(1);
+      context.setTotalPrice(context.totalPrice);
+    } else{
+      setCounterQuantityProducts(counterQuantityProducts - 1);
+      context.setTotalPrice(context.totalPrice -= price);
     }
   }
 
   return(
-    <section className="relative grid grid-cols-1 grid-rows-2 w-full h-fit px-5 pt-4">
-      <figure className='section__cartItem grid grid-cols-2 grid-rows-2 gap-x-2 w-full h-[120px]'>
+    <section className="section__cartItem relative w-full h-fit px-5 pt-4 pb-4">
+      <figure className='section__cartItem--infoProducts gap-x-2 w-full h-fit'>
         <img className='w-[150px] h-full rounded-lg' src={img} alt={title} />
-        <div className='display flex flex-col text-start'>
+        <div className='flex h-fit flex-col text-start border-b-2 pb-1'>
           <h2 className='font-bold font-'>Product:</h2>
           <p>{title}</p>
         </div>
-        <div className='display flex flex-col text-start border-t-2 pt-2'>
+        <div className='flex h-fit flex-col text-start'>
           <h2 className='font-bold'>Price:</h2>
           <span>${price}</span>
         </div>
@@ -44,13 +54,13 @@ function ItemsCart ({id, title, img, price, handleDeleteItem}) {
           <GoPlus />
         </button>
         <div className="flex items-center gap-2">
-          <span>{counter}</span>
+          <span id='counter' >{counterQuantityProducts}</span>
         </div>
         <button onClick={() => decreaseCounter()}>
           <RiSubtractFill />
         </button>
       </div>
-      <button onClick={() => handleDeleteItem(id)} className="absolute top-0 right-5 p-2 border-2 rounded-full">
+      <button onClick={() => handleDeleteItem(id, price, totalQuantityProducts)} className="absolute top-0 right-5 p-2 border-2 rounded-full">
         <MdOutlineRemoveShoppingCart />
       </button>
     </section>

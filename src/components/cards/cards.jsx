@@ -19,6 +19,7 @@ function Cards ({data}){
     context.setCloseItem(false);
     context.setCheckoutCartAside(true);
     context.setCounter(context.counter + 1);
+    context.setTotalPrice(context.totalPrice + objectElement.price);
     context.setShowElementCart([...context.showElementCart, objectElement]);
   }
 

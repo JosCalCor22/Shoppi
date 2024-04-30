@@ -9,33 +9,41 @@ import { ItemsCart } from './components/itemsCart';
 function CheckoutAsideCart () {
   const context = useContext(ShopiCartContext);
 
-  const handleDeleteItem = (id) => {
+  const handleDeleteItem = (id, price, quantityProducts) => {
     const itemDeleted = context.showElementCart.filter(item => item.id != id)
 
     context.setShowElementCart(itemDeleted);
     context.setCounter(context.counter - 1);
+    console.log(quantityProducts);
+    context.setTotalPrice(context.totalPrice - (price * quantityProducts));
   }
 
   return (
-    <aside className={`${context.CheckoutAsideCart ? 'flex' : 'hidden'}flex-col sticky gap-5 top-5 w-[380px] h-[600px] overflow-y-scroll border-2 border-slate-950/5 rounded-lg`}>
-      <section className='flex w-full h-fit justify-between py-4 px-5'>
-        <h2 className="text-xl font-semibold">Checkout Product</h2>
-        <button
-          onClick={() => context.setCheckoutCartAside(false)}>
-          <IoCloseOutline className="w-5 h-5"/>
-        </button>
+    <aside className={`${context.checkoutCartAside ? 'flex' : 'hidden'} sticky`}>
+      <section className='relative flex flex-col gap-5 top-5 w-[380px] h-[600px] overflow-y-scroll border-2 border-slate-950/5 rounded-lg'>
+        <div className='flex w-full h-fit justify-between py-4 px-5'>
+          <h2 className="text-xl font-semibold">Checkout Product</h2>
+          <button
+            onClick={() => context.setCheckoutCartAside(false)}>
+            <IoCloseOutline className="w-5 h-5"/>
+          </button>
+        </div>
+        {
+          context.showElementCart?.map((item) => (
+            <ItemsCart 
+              key={item.id} 
+              id={item.id} 
+              title={item.title} 
+              img={item.images[0]} 
+              price={item.price}
+              handleDeleteItem={handleDeleteItem} />
+          ))
+        }
+        <div className='z-10 flex sticky bottom-0 w-full h-fit justify-between px-5 py-3 bg-white'>
+          <h2 className="text-lg font-semibold">Total</h2>
+          <p className="text-lg font-semibold">{context.totalPrice}</p>
+        </div>
       </section>
-      {
-        context.showElementCart?.map((item) => (
-          <ItemsCart 
-            key={item.id} 
-            id={item.id} 
-            title={item.title} 
-            img={item.images[0]} 
-            price={item.price}
-            handleDeleteItem={handleDeleteItem} />
-        ))
-      }
     </aside>
   )
 }

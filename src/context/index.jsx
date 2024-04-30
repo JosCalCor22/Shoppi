@@ -3,25 +3,30 @@ import { createContext, useState } from 'react'
 const ShopiCartContext = createContext();
 
 function ShopiCardProvider({children}){
-  /* Counter state | Add to cart */
+  /* Counter state for aside element where I do the checkout products | Add to cart */
   const [counter, setCounter] = useState(0);
 
-  /* Close item state | Details product */
+  /* Show total prize of objetcs */
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  /* Close aside information | Details product */
   const [closeItem, setCloseItem] = useState(false);
 
-  /* Show checkout cart | See items in cart */
+  /* Show checkout aside when the condition is true | See items in cart */
   const [checkoutCartAside, setCheckoutCartAside] = useState(false);
 
-  /* Show details products | Details */
+  /* Show details products in an aside bar when I click the image | Details */
   const [showDetails, setShowDetails] = useState({});
 
-  /* Show element in cart | Add */
+  /* Show aside element with checkout products | Add */
   const [showElementCart, setShowElementCart] = useState([]);
 
   return(
     <ShopiCartContext.Provider value={{
       counter, 
       setCounter,
+      totalPrice,
+      setTotalPrice,
       closeItem,
       setCloseItem,
       showDetails,
