@@ -15,6 +15,10 @@ function ShopiCardProvider({children}){
   /* Show checkout aside when the condition is true | See items in cart */
   const [checkoutCartAside, setCheckoutCartAside] = useState(false);
 
+  /* Products in section MyOrder */
+  const [myOrder, setMyOrder] = useState([]);
+  console.log(myOrder);
+
   /* Show details products in an aside bar when I click the image | Details */
   const [showDetails, setShowDetails] = useState({});
 
@@ -34,7 +38,9 @@ function ShopiCardProvider({children}){
       showElementCart,
       setShowElementCart,
       checkoutCartAside,
-      setCheckoutCartAside
+      setCheckoutCartAside,
+      myOrder,
+      setMyOrder
       }}>
       {children}
     </ShopiCartContext.Provider>

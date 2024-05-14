@@ -60,9 +60,13 @@ function ItemsCart ({id, title, img, price, handleDeleteItem}) {
           <RiSubtractFill />
         </button>
       </div>
-      <button onClick={() => handleDeleteItem(id, price, totalQuantityProducts)} className="absolute top-0 right-5 p-2 border-2 rounded-full">
-        <MdOutlineRemoveShoppingCart />
-      </button>
+      {
+        context.checkoutCartAside && (
+          <button onClick={() => handleDeleteItem(id, price, totalQuantityProducts)} className="absolute top-0 right-5 p-2 border-2 rounded-full">
+            <MdOutlineRemoveShoppingCart />
+          </button>
+        )
+      }
     </section>
   )
 }

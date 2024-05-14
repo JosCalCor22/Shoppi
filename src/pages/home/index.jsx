@@ -19,11 +19,11 @@ function Home () {
   }, [])
 
   return (
-    <section className='flex justify-center text-center'>
+    <section className='flex justify-center text-center mb-4'>
       <Layout>
         <section className='flex flex-col items-center'>
-          <h2 className='text-3xl w-fit font-semibold my-4 pb-1 px-3 border-b-2'>Home</h2>
-          <section className='grid grid-cols-3 gap-5'>
+          <h2 className='text-3xl w-full font-bold my-4 pb-1 mb-5 border-b-2 border-dotted border-[#351e1a]'>Home</h2>
+          <section className='grid grid-cols-3 gap-5 px-3'>
             {
               catalogue?.map(item => (
                 <Cards key={item.id} data={item} />
