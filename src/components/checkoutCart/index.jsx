@@ -36,8 +36,8 @@ function CheckoutAsideCart () {
   }
 
   return (
-    <aside className={`${context.checkoutCartAside ? 'flex' : 'hidden'} sticky`}>
-      <section className='relative flex flex-col gap-5 top-5 w-[380px] h-[600px] overflow-y-scroll border-2 border-slate-950/5 rounded-lg'>
+    <aside className={`${context.checkoutCartAside ? 'flex' : 'hidden'} sticky top-5 h-fit`}>
+      <section className='static flex flex-col top-5 w-[360px] h-[600px] border-2 border-[#351e1a] rounded-lg'>
         <div className='flex w-full h-fit justify-between py-4 px-5'>
           <h2 className="text-xl font-semibold">Checkout Product</h2>
           <button
@@ -45,22 +45,27 @@ function CheckoutAsideCart () {
             <IoCloseOutline className="w-5 h-5"/>
           </button>
         </div>
-        {
-          context.showElementCart?.map((item) => (
-            <ItemsCart 
-              key={item.id} 
-              id={item.id} 
-              title={item.title} 
-              img={item.images[0]} 
-              price={item.price}
-              handleDeleteItem={handleDeleteItem} />
-          ))
-        }
-        <div className='z-10 flex sticky bottom-0 w-full h-fit justify-between px-5 py-3 bg-white'>
-          <h2 className="text-lg font-semibold">Total</h2>
-          <p className="text-lg font-semibold">${context.totalPrice}</p>
+        <div className='flex flex-col h-full overflow-y-scroll'>
+          {
+            context.showElementCart?.map((item) => (
+              <ItemsCart 
+                key={item.id} 
+                id={item.id} 
+                title={item.title} 
+                img={item.images[0]} 
+                price={item.price}
+                handleDeleteItem={handleDeleteItem} />
+            ))
+          }
+        </div>
+        <div className='z-10 flex items-center relative bottom-0 w-full h-fit justify-between px-5 py-4'>
+          <h2 className="flex gap-2 text-lg font-bold">Total: <p className="text-lg font-semibold">${context.totalPrice}</p></h2>
           <Link to='/my-order/my-last-order'>
-            <button onClick={handleCheckout}>Checkout</button>
+            <button 
+              className='btnCheckoutCart w-fit py-2 px-5 rounded-lg text-white bg-[#aa6558] font-semibold'
+              onClick={handleCheckout}>
+              Checkout
+            </button>
           </Link>
         </div>
       </section>

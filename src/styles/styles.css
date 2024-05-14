@@ -15,10 +15,11 @@ html{
   background-color: var(--primary-color);
 }
 
-a{
+a, button{
   transition: all .3s ease;
 }
 
+/* Header Styles */
 .listActive{
   border-bottom: 2px solid var(--secondary-color);
 }
@@ -32,3 +33,10 @@ a{
   transform: scale(1.1);
   color: var(--extra-color);
 }
+/* Header Styles */
+
+/* Aside Checkout Styes */
+.btnCheckoutCart:hover{
+  background-color: var(--extra-color);
+}
+/* Aside Checkout Styes */

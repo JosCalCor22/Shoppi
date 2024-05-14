@@ -40,7 +40,7 @@ function ItemsCart ({id, title, img, price, handleDeleteItem}) {
     <section className="section__cartItem relative w-full h-fit px-5 pt-4 pb-4">
       <figure className='section__cartItem--infoProducts gap-x-2 w-full h-fit'>
         <img className='w-[150px] h-full rounded-lg' src={img} alt={title} />
-        <div className='flex h-fit flex-col text-start border-b-2 pb-1'>
+        <div className='flex h-fit flex-col text-start border-b-2 border-[#351e1a] pb-1'>
           <h2 className='font-bold font-'>Product:</h2>
           <p>{title}</p>
         </div>
@@ -49,7 +49,7 @@ function ItemsCart ({id, title, img, price, handleDeleteItem}) {
           <span>${price}</span>
         </div>
       </figure>
-      <div className="flex justify-between h-fit py-4 px-4 mt-3 border-2 rounded-lg">
+      <div className="flex justify-between h-fit py-4 px-4 mt-3 border-2 border-[#351e1a] rounded-lg">
         <button onClick={() => increaseCounter()}>
           <GoPlus />
         </button>
@@ -62,7 +62,9 @@ function ItemsCart ({id, title, img, price, handleDeleteItem}) {
       </div>
       {
         context.checkoutCartAside && (
-          <button onClick={() => handleDeleteItem(id, price, totalQuantityProducts)} className="absolute top-0 right-5 p-2 border-2 rounded-full">
+          <button 
+            className="absolute top-0 right-5 p-2 border-2 border-[#351e1a] rounded-full"
+            onClick={() => handleDeleteItem(id, price, totalQuantityProducts)}>
             <MdOutlineRemoveShoppingCart />
           </button>
         )
