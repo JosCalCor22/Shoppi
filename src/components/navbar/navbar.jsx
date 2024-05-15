@@ -14,40 +14,41 @@ function Navbar(){
     <section className="flex items-center justify-between px-3 py-2.5">
       <nav className="flex gap-3 items-center">
         <div className='flex'>
-          <NavLink to={"/"}>
+          <NavLink 
+              to={"/"}>
             <span className="font-bold text-3xl">Shopi</span>
           </NavLink>
         </div>
         <div className='flex gap-2 h-full pt-2'>
           <NavLink 
-          to={"/all"} 
-          className={`${classItemActive} listHeader`}>
-            All
+            to={"/smartphones"} 
+            className={`${classItemActive} listHeader`}>
+            Smartphones
           </NavLink>
           <NavLink 
-          to={"/clothes"} 
-          className={`${classItemActive} listHeader`}>
-            Clothes
+            to={"/laptops"}
+            className={`${classItemActive} listHeader`}>
+            Laptops
           </NavLink>
           <NavLink 
-          to={"/furniture"} 
-          className={`${classItemActive} listHeader`}>
-            Furniture
+            to={"/fragances"}
+            className={`${classItemActive} listHeader`}>
+            Fragances
           </NavLink>
           <NavLink 
-          to={"/toys"} 
-          className={`${classItemActive} listHeader`}>
-            Toys
+            to={"/forniture"} 
+            className={`${classItemActive} listHeader`}>
+            Forniture
           </NavLink>
           <NavLink 
-          to={"/technology"} 
-          className={`${classItemActive} listHeader`}>
-            Technology
+            to={"/skincare"} 
+            className={`${classItemActive} listHeader`}>
+            Skincare
           </NavLink>
           <NavLink 
-          to={"/others"} 
-          className={`${classItemActive} listHeader`}>
-            Others
+            to={"/groceries"} 
+            className={`${classItemActive} listHeader`}>
+            Groceries
           </NavLink>
         </div>
       </nav>

@@ -40,3 +40,10 @@ a, button{
   background-color: var(--extra-color);
 }
 /* Aside Checkout Styes */
+
+/* Order User Styles */
+.arrowOrderUser:hover{
+  padding: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--extra-color);
+}

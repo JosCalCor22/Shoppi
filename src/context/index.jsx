@@ -1,10 +1,14 @@
 import { createContext, useState } from 'react'
 
 const ShopiCartContext = createContext();
+const URLAPI = 'https://dummyjson.com/products/';
 
 function ShopiCardProvider({children}){
   /* Counter state for aside element where I do the checkout products | Add to cart */
   const [counter, setCounter] = useState(0);
+
+  /* Show all products at home */
+  const [catalogue, setCatalogue] = useState([]);
 
   /* Show total prize of objetcs */
   const [totalPrice, setTotalPrice] = useState(0);
@@ -17,7 +21,6 @@ function ShopiCardProvider({children}){
 
   /* Products in section MyOrder */
   const [myOrder, setMyOrder] = useState([]);
-  console.log(myOrder);
 
   /* Show details products in an aside bar when I click the image | Details */
   const [showDetails, setShowDetails] = useState({});
@@ -31,6 +34,8 @@ function ShopiCardProvider({children}){
       setCounter,
       totalPrice,
       setTotalPrice,
+      catalogue,
+      setCatalogue,
       closeItem,
       setCloseItem,
       showDetails,
@@ -47,4 +52,4 @@ function ShopiCardProvider({children}){
   )
 }
 
-export { ShopiCardProvider, ShopiCartContext }
+export { ShopiCardProvider, ShopiCartContext, URLAPI }
